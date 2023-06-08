@@ -13,7 +13,8 @@ resource "aws_api_gateway_method" "proxy" {
   rest_api_id   = aws_api_gateway_rest_api.hospitalplanner.id
   resource_id   = aws_api_gateway_resource.proxy.id
   http_method   = "ANY"
-  authorization = "NONE"
+  authorization = "CUSTOM"
+  authorizer_id = aws_api_gateway_authorizer.supabase.id
 }
 
 resource "aws_api_gateway_integration" "lambda" {
@@ -44,4 +45,23 @@ resource "aws_lambda_permission" "apigateway" {
   # The /*/* portion grants access from any method on any resource
   # within the API Gateway "REST API".
   source_arn = "${aws_api_gateway_rest_api.hospitalplanner.execution_arn}/*/*"
+}
+
+
+
+# AUTHORIZER
+resource "aws_lambda_function" "auth" {
+    function_name    = "lambda-auth-backend"
+    s3_bucket        = var.bucket_id
+    s3_key           = "authenticator/lambda_package.zip"
+    runtime          = "python3.9"
+    handler          = "main.lambda_handler"
+    role             = "arn:aws:iam::568433399472:role/service-role/supabase-auth-role-o87ww6k6"
+}
+
+resource "aws_api_gateway_authorizer" "supabase" {
+  name                   = "supabase"
+  rest_api_id            = aws_api_gateway_rest_api.hospitalplanner.id
+  authorizer_uri         = aws_lambda_function.auth.invoke_arn
+  authorizer_credentials = "arn:aws:iam::568433399472:role/service-role/supabase-auth-role-o87ww6k6" #TODO CHANGE HARCODED ARN TO CICD
 }
