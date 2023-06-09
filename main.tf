@@ -14,3 +14,7 @@ module "apigateway" {
     lambda_api_name = module.lambda.lambda_api_name
     bucket_id = module.bucket.s3_bucket_backend_id
 }
+
+module "database" {
+    source = "./database"
+}
