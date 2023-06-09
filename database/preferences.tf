@@ -9,10 +9,10 @@ resource "aws_dynamodb_table" "preferences" {
         type = "S"
     }
 
-    attribute {
-        name = "name"
-        type = "S"
-    }
+    # attribute {
+    #     name = "name"
+    #     type = "S"
+    # }
 
     attribute {
         name = "datetime"
