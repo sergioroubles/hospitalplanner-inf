@@ -64,4 +64,5 @@ resource "aws_api_gateway_authorizer" "supabase" {
   rest_api_id            = aws_api_gateway_rest_api.hospitalplanner.id
   authorizer_uri         = aws_lambda_function.auth.invoke_arn
   authorizer_credentials = "arn:aws:iam::568433399472:role/service-role/supabase-auth-role-o87ww6k6" #TODO CHANGE HARCODED ARN TO CICD
+  identity_source = "method.request.header.accessToken"
 }
