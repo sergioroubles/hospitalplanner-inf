@@ -5,4 +5,5 @@ resource "aws_lambda_function" "algorithm" {
     runtime          = "python3.9"
     handler          = "src.main.handler"
     role             = aws_iam_role.lambda_backend.arn
+    timeout = 6
 }
