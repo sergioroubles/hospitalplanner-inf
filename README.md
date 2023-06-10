@@ -16,6 +16,7 @@ terraform init
 ```
 export TF_VAR_AWS_ACCESS_KEY=XXXX
 export TF_VAR_AWS_SECRET_KEY=YYYYYYYYY
+export TF_VAR_SUPABASE_ANON_KEY=ZZZZZZZZZZZZZ
 ```
 
 and source it:

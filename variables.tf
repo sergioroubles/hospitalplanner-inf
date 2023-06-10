@@ -10,6 +10,11 @@ variable AWS_ACCESS_KEY {
 }
 
 variable AWS_SECRET_KEY {
-    description = "Seccret key for terraform user"
+    description = "Secret key for terraform user"
     type        = string
+}
+
+variable PUBLIC_SUPABASE_ANON_KEY {
+    description = "Public supabase anon key for the authenticator lambda."
+    type = string
 }

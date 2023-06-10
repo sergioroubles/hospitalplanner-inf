@@ -12,3 +12,8 @@ variable "bucket_id" {
     description = "Bucket id for the auth lambda"
     type = string
 }
+
+variable PUBLIC_SUPABASE_ANON_KEY {
+    description = "Public supabase anon key for the authenticator lambda."
+    type = string
+}

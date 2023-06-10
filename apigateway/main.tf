@@ -57,6 +57,13 @@ resource "aws_lambda_function" "auth" {
     runtime          = "python3.9"
     handler          = "main.lambda_handler"
     role             = "arn:aws:iam::568433399472:role/service-role/supabase-auth-role-o87ww6k6"
+
+    environment {
+      variables = {
+        PUBLIC_SUPABASE_URL = "https://mxemncnouldyyxhohrax.supabase.co"
+        PUBLIC_SUPABASE_ANON_KEY = "${var.PUBLIC_SUPABASE_ANON_KEY}"
+      }
+    }
 }
 
 resource "aws_api_gateway_authorizer" "supabase" {
@@ -65,4 +72,6 @@ resource "aws_api_gateway_authorizer" "supabase" {
   authorizer_uri         = aws_lambda_function.auth.invoke_arn
   authorizer_credentials = "arn:aws:iam::568433399472:role/service-role/supabase-auth-role-o87ww6k6" #TODO CHANGE HARCODED ARN TO CICD
   identity_source = "method.request.header.accessToken"
+  authorizer_result_ttl_in_seconds = 0
 }
+
