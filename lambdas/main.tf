@@ -44,11 +44,10 @@ data "aws_iam_policy_document" "lambda_log_and_invoke_policy" {
   statement {
     effect = "Allow"
 
-    actions = ["lambda:InvokeFunction"]
+    actions = ["lambda:*"]
 
     resources = ["arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:function:*"]
   }
-
 }
 
 resource "aws_iam_role_policy" "api_lambda_role_policy" {
