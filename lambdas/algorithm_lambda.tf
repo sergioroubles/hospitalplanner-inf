@@ -3,7 +3,7 @@ resource "aws_lambda_function" "algorithm" {
     s3_bucket        = var.bucket_id
     s3_key           = "algorithm/lambda_package.zip"
     runtime          = "python3.9"
-    handler          = "src.main.handler"
+    handler          = "lambda_function.lambda_handler"
     role             = aws_iam_role.lambda_backend.arn
     timeout = 6
 }
