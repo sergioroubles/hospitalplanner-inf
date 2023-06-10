@@ -15,3 +15,7 @@ module "apigateway" {
     bucket_id = module.bucket.s3_bucket_backend_id
     PUBLIC_SUPABASE_ANON_KEY = var.PUBLIC_SUPABASE_ANON_KEY
 }
+
+module "database" {
+    source = "./database"
+}
