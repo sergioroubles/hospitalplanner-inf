@@ -15,11 +15,6 @@ resource "aws_dynamodb_table" "assignments" {
     }
 
     attribute {
-        name = "shift_id"
-        type = "S"
-    }
-
-    attribute {
         name = "worker_id"
         type = "S"
     }
@@ -34,7 +29,6 @@ resource "aws_dynamodb_table" "assignments" {
     global_secondary_index {
         name = "plan_id-index"
         hash_key = "plan_id"
-        range_key = "shift_id"
         projection_type = "ALL"
     }
 }
