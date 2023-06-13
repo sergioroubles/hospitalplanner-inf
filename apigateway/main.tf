@@ -14,7 +14,7 @@ resource "aws_api_gateway_method" "proxy" {
   resource_id   = aws_api_gateway_resource.proxy.id
   http_method   = "ANY"
   authorization = "CUSTOM"
-  authorizer_id = aws_api_gateway_authorizer.supabase.id
+  authorizer_id = var.authorizer_id
 }
 
 resource "aws_api_gateway_integration" "lambda" {
@@ -34,6 +34,9 @@ resource "aws_api_gateway_deployment" "hospitalplanner" {
 
   rest_api_id = aws_api_gateway_rest_api.hospitalplanner.id
   stage_name  = "test"
+  variables = {
+    deployed_at = "13/06/23 21:37"
+  }
 }
 
 resource "aws_lambda_permission" "apigateway" {
