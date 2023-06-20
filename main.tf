@@ -1,3 +1,14 @@
+# Main definition
+terraform {
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket = "hospitalplanner-terraform-backend"
+    key    = "tf"
+    region = "eu-west-2"
+    encrypt        = true
+  }
+}
+
 # Modules
 module "bucket" {
     source = "./buckets"
@@ -22,3 +33,4 @@ module "apigateway" {
 module "database" {
     source = "./database"
 }
+
