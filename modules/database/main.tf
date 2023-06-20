@@ -1,3 +1,3 @@
 locals {
-  env_suffix = var.environment == "prod"? "" : "-dev"
+  env_suffix = var.environment == "prod"? "-prod" : "-dev"
 }
