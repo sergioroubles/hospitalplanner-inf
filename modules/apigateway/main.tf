@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "hospitalplanner" {
-  name        = "hospitalplanner"
-  description = "Hospital Planner API Gateway"
+  name        = "hospitalplanner-${var.environment}"
+  description = "Hospital Planner API Gateway for ${var.environment} environment"
 }
 
 resource "aws_api_gateway_resource" "proxy" {
