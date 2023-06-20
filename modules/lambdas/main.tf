@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
 
 # Creat lambda role, allow lambda to assume this role
 resource "aws_iam_role" "lambda_backend" {
-    name               = "backend_lambda_role"
+    name               = "backend_lambda_role-${var.environment}"
     assume_role_policy = "${data.aws_iam_policy_document.AWSLambdaTrustPolicy.json}"
 }
 
@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "lambda_log_and_invoke_policy" {
 }
 
 resource "aws_iam_role_policy" "api_lambda_role_policy" {
-  name   = "api-lambda-role-policy"
+  name   = "api-lambda-role-policy-${var.environment}"
   role   = "${aws_iam_role.lambda_backend.id}"
   policy = "${data.aws_iam_policy_document.lambda_log_and_invoke_policy.json}"
 }

@@ -16,3 +16,8 @@ variable "bucket_id" {
 variable "authorizer_id" {
     type = string
 }
+
+variable "environment" {
+    description = "Environment: dev | prod."
+    type = string
+}

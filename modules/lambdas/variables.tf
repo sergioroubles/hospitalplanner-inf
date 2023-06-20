@@ -15,6 +15,12 @@ variable PUBLIC_SUPABASE_ANON_KEY {
 variable "restapi_execution_arn"{
     type = string
 }
+
+variable "environment"{
+    description = "Environment of deployment: dev | prod."
+    type = string
+}
+
 data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
