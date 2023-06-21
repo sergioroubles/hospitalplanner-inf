@@ -1,6 +1,6 @@
 # AUTHORIZER
 resource "aws_lambda_function" "auth" {
-    function_name    = "lambda-auth-backend"
+    function_name    = "lambda-auth-backend-${var.environment}"
     s3_bucket        = var.bucket_id
     s3_key           = "authenticator/lambda_package.zip"
     runtime          = "python3.9"
@@ -16,7 +16,7 @@ resource "aws_lambda_function" "auth" {
 }
 
 resource "aws_lambda_permission" "authgateway" {
-  statement_id  = "AllowAPIGatewayInvoke"
+  statement_id  = "AllowAPIGatewayInvoke-${var.environment}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.auth.function_name
   principal     = "apigateway.amazonaws.com"
@@ -38,7 +38,7 @@ resource "aws_api_gateway_authorizer" "supabase" {
 
 
 resource "aws_iam_role" "invocation_role" {
-    name = "api_gateway_auth_invocation"
+    name = "api_gateway_auth_invocation-${var.environment}"
     path = "/"
 
     assume_role_policy = <<EOF

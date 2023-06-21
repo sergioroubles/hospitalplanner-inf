@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "hospitalplanner" {
-  name        = "hospitalplanner"
-  description = "Hospital Planner API Gateway"
+  name        = "hospitalplanner-${var.environment}"
+  description = "Hospital Planner API Gateway for ${var.environment} environment"
 }
 
 resource "aws_api_gateway_resource" "proxy" {
@@ -33,7 +33,7 @@ resource "aws_api_gateway_deployment" "hospitalplanner" {
   ]
 
   rest_api_id = aws_api_gateway_rest_api.hospitalplanner.id
-  stage_name  = "test"
+  stage_name  = "${var.environment}"
   variables = {
     deployed_at = "13/06/23 21:37"
   }

@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "workers" {
-  name           = "workers"
+  name           = "workers${local.env_suffix}"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "id"
 

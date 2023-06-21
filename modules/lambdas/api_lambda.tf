@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "api" {
-    function_name    = "lambda-api-backend"
+    function_name    = "lambda-api-backend-${var.environment}"
     s3_bucket        = var.bucket_id
     s3_key           = "api/lambda_package.zip"
     runtime          = "python3.9"
