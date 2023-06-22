@@ -2,7 +2,7 @@ from generators import generate_resources, generate_dynamodb_items
 import json
 import os
 
-service_name = "servicio-Zulet"
+service_name = "servicio-zulet"
 
 workers_with_restrictions = {
     'Rocio': ["2023/03/02", "2023/03/03", "2023/03/04", "2023/03/05"],
@@ -17,7 +17,7 @@ shifts_dates_list = [f"2023/03/{day}" for day in range(1, 31)]
 
 resources = generate_resources(service_name, workers_with_restrictions, shifts_dates_list)
 
-path = f"data/{service_name}-json"
+path = f"data/{service_name}"
 if not os.path.exists(path):
     os.mkdir(path)
     

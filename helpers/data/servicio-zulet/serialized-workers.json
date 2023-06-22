@@ -1,0 +1,68 @@
+[
+    {
+        "name": {
+            "S": "Rocio"
+        },
+        "id": {
+            "S": "2dbd220a-1468-4334-b43c-5139046e813f"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    },
+    {
+        "name": {
+            "S": "Maria"
+        },
+        "id": {
+            "S": "d0c9755c-a3f7-4bb7-b262-1b8c41aff42d"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    },
+    {
+        "name": {
+            "S": "Pablo"
+        },
+        "id": {
+            "S": "8f9ef23c-4311-4fe8-87e2-84bde629f37f"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    },
+    {
+        "name": {
+            "S": "Ines"
+        },
+        "id": {
+            "S": "351e557b-50b5-4711-8e87-c426dae86a1f"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    },
+    {
+        "name": {
+            "S": "Ric"
+        },
+        "id": {
+            "S": "2b24aad5-bf69-489f-b8ca-6278637056f4"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    },
+    {
+        "name": {
+            "S": "Ravi"
+        },
+        "id": {
+            "S": "6fc7c862-8ab6-43ab-bcf8-ea8fba5badfd"
+        },
+        "service_id": {
+            "S": "e2c821fd-41c9-477f-8153-d04eb5476089"
+        }
+    }
+]
