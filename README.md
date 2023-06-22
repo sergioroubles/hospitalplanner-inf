@@ -1,13 +1,18 @@
-# hospitalplanner-inf
-Repository to host infrastructure for hospitalplanner. This project is done in terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so.
 
-- [hospitalplanner-inf](#hospitalplanner-inf)
+- [Introduction](#introduction)
 - [Structure](#structure)
   - [Modules](#modules)
   - [Environments](#environments)
 - [Instructions](#instructions)
 - [Hints](#hints)
 - [CI/CD](#cicd)
+
+# Introduction
+Repository to host infrastructure for hospitalplanner. This project is done in terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so.
+
+The architecural pattern followed in this application is **Serverless**, and is depicted is the following diagram:
+
+![Architecture of the application.](architecture.png)
 
 # Structure
 
