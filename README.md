@@ -1,46 +1,73 @@
 # hospitalplanner-inf
-Repository to host infrastructure for hospitalplanner
+Repository to host infrastructure for hospitalplanner. This project is done in terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so.
+
+- [hospitalplanner-inf](#hospitalplanner-inf)
+- [Structure](#structure)
+  - [Modules](#modules)
+  - [Environments](#environments)
+- [Instructions](#instructions)
+- [Hints](#hints)
 
 # Structure
 
-- modules/: different reusable terraform modules of the project
-    -apigateway
-    -buckets
-    -database
-    -lambdas
-- environments/: environment directories where terraform is initialized:
-    -dev
-    -prod
+## Modules
+Different reusable terraform modules of the project. They define the architecture itself.
 
-# Instructions to deploy
+    - apigateway
+    - buckets
+    - database
+    - lambdas
+## Environments
+Environment directories where terraform is initialized.
+
+    - dev:
+    - prod
+
+# Instructions
 
 1. Install terraform from https://www.terraform.io/.
 
-2. Go in your terminal to the environment you want to work in and run
+2. Configure **your** user credentials to allow terraform to connect to S3 backend:
 
 ```bash
-terraform init
+export AWS_ACCESS_KEY_ID="XXXXX"
+export AWS_SECRET_ACCESS_KEY="XXXXX"
+export AWS_SESSION_TOKEN="XXXXX"
 ```
-NOTE: This command initializes the terraform project, which syncronizes the backend with the corresponding S3 bucket. Therefore, in order to do so, you will need to have awscli configured to communicate with aws.
 
-Furthermore, aws sso login doesn't work with Terraform, so you need to click on programatic access on the AWS start page, and export the credentials as suggested to your console.
-
-
-3. Set up credentials file for the terraform user. In the root of the repo (or anywhere you want), create a credentials.env with the following structure:
-
+3. Initialize the terraform proyect to connect to backend and start terraform in the directory needed. If you are not sure which directory you want, use **dev**.
+```bash
+$ cd environments/dev
+(..)/environments/dev$ terraform init
 ```
+
+
+4. Set up credentials file with the **terraform** user credentials and the supabase anon key. In the root of the repo (or anywhere you want), create a credentials.env with the following structure:
+
+``` 
+# Terraform user credentials
 export TF_VAR_AWS_ACCESS_KEY=XXXX
 export TF_VAR_AWS_SECRET_KEY=YYYYYYYYY
+
+# Supabase anon key
 export TF_VAR_SUPABASE_ANON_KEY=ZZZZZZZZZZZZZ
 ```
+⚠️ **WARNING >>>>> MAKE SURE YOU INCLUDE THE FILE IN .gitignore !!!!**
 
-and source it:
+
+5. Source the credentials file.
 
 ```bash
 source credentials.env
 ```
 
-4. Run terraform plan to debug and see the effect of your plan in the cloud, with respect to previous state. For example, for dev, go to the dev directory and run
+# Hints
+You can run 
+```bash
+terraform plan
+```
+ 
+to debug and see the effect of your plan in the cloud, with respect to previous state. For example, for dev, go to the dev directory and run
 
 ```bash
 hospitalplanner-inf/environments/dev$ terraform plan
