@@ -42,7 +42,7 @@ def generate_resources(service_name, workers_with_restrictions, shifts_dates_lis
                 "service_id": service_id,
                 "name": "Sin nombre",
                 "description": "Sin descripcion",
-                "date": date,
+                "datetime": date,
             }
             restrictions.append(restriction)
     
@@ -51,7 +51,7 @@ def generate_resources(service_name, workers_with_restrictions, shifts_dates_lis
         shift = {
             "id": str(uuid4()),
             "service_id": service_id,
-            "date": shift_date,
+            "datetime": shift_date,
             "name": "Sin nombre",
             "description": "Sin descripcion"
             }
