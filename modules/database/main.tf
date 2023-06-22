@@ -4,6 +4,6 @@ locals {
     "workers": jsondecode(file("${path.module}/mock-data/serialized-workers.json"))
     "shifts": jsondecode(file("${path.module}/mock-data/serialized-shifts.json"))
     "restrictions": jsondecode(file("${path.module}/mock-data/serialized-restrictions.json"))
-    "shifts": jsondecode(file("${path.module}/mock-data/serialized-shifts.json"))
+    "services": jsondecode(file("${path.module}/mock-data/serialized-services.json"))
   }
 }
