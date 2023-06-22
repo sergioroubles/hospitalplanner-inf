@@ -16,11 +16,15 @@ permissions:
   contents: read
 
 env:
+  # Credentials used by cli to initialize
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }} # Used by awscli
-  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }} # Used by tfvariables
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }} # Used by awscli
-  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }} # Used by tfvariables
+  # Credentials used as TF variables
+  TF_VAR_AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }} # Used by tfvariables
+  TF_VAR_AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }} # Used by tfvariables
   AWS_REGION: eu-west-2
+  TF_VAR_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  ENVIRONMENT: prod
 
 jobs:
   terraform:
