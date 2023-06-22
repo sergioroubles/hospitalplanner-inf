@@ -1,4 +1,5 @@
 from uuid import uuid4
+from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
 
 # ARGS EXAMPLE
 # service_name = "Servicio de Zulet"
@@ -64,3 +65,16 @@ def generate_resources(service_name, workers_with_restrictions, shifts_dates_lis
     }
     
     return resources
+
+
+def generate_dynamodb_items(list_of_dicts):
+    type_serializer = TypeSerializer()
+
+    items = []
+    for item in list_of_dicts:
+        item_dict = {}
+        for key in item:
+            item_dict[key] = type_serializer.serialize(item[key])
+        items.append(item_dict)
+    
+    return items
