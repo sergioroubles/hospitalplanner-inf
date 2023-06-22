@@ -19,7 +19,7 @@ variable "PUBLIC_SUPABASE_ANON_KEY" {
   type        = string
 }
 
-variable "environment" {
+variable "ENVIRONMENT" {
   description = "Environment: dev | prod"
   type        = string
 }
