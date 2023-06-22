@@ -2,7 +2,7 @@ from generators import generate_resources, generate_dynamodb_items
 import json
 import os
 
-service_name = "servicio-zulet"
+service_name = "serviciozulet"
 
 workers_with_restrictions = {
     'Rocio': ["2023/03/02", "2023/03/03", "2023/03/04", "2023/03/05"],

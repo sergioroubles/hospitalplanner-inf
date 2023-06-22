@@ -8,7 +8,11 @@
 - [CI/CD](#cicd)
 
 # Introduction
+<<<<<<< HEAD
 Repository to host infrastructure for hospitalplanner. This project is done in terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so. 
+=======
+Repository to host infrastructure for hospitalplanner. This project is done on terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so. 
+>>>>>>> 7e4019fa3afe56ef686817d673c254b65be44998
 
 The architecural pattern followed in this application is **Serverless**, and is depicted is the following diagram:
 
