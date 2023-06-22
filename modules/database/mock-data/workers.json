@@ -1,0 +1,18 @@
+[
+  {
+    "id": "36f88218-b6b1-489c-9ebb-ab9073a18427",
+    "name": "John Doe"
+  },
+  {
+    "id": "a0a3b4c5-6d7e-4f8a-9b1c-2d3e4f5a6b7c",
+    "name": "Jane Doe"
+  },
+  {
+    "id": "b0b3b4c5-6d7e-4f8a-9b1c-2d3e4f5a6b7c",
+    "name": "John Smith"
+  },
+  {
+      "id": "c0c3b4c5-6d7e-4f8a-9b1c-2d3e4f5a6b7c",
+      "name": "Jane Smith"
+  }
+]
