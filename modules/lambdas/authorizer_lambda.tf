@@ -1,18 +1,18 @@
 # AUTHORIZER
 resource "aws_lambda_function" "auth" {
-    function_name    = "lambda-auth-backend-${var.environment}"
-    s3_bucket        = var.bucket_id
-    s3_key           = "authenticator/lambda_package.zip"
-    runtime          = "python3.9"
-    handler          = "main.lambda_handler"
-    role             = aws_iam_role.lambda_backend.arn 
+  function_name = "lambda-auth-backend-${var.environment}"
+  s3_bucket     = var.bucket_id
+  s3_key        = "authenticator/lambda_package.zip"
+  runtime       = "python3.9"
+  handler       = "main.lambda_handler"
+  role          = aws_iam_role.lambda_backend.arn
 
-    environment {
-      variables = {
-        PUBLIC_SUPABASE_URL = "https://mxemncnouldyyxhohrax.supabase.co"
-        PUBLIC_SUPABASE_ANON_KEY = "${var.PUBLIC_SUPABASE_ANON_KEY}"
-      }
+  environment {
+    variables = {
+      PUBLIC_SUPABASE_URL      = "https://mxemncnouldyyxhohrax.supabase.co"
+      PUBLIC_SUPABASE_ANON_KEY = "${var.PUBLIC_SUPABASE_ANON_KEY}"
     }
+  }
 }
 
 resource "aws_lambda_permission" "authgateway" {
@@ -27,21 +27,21 @@ resource "aws_lambda_permission" "authgateway" {
 }
 
 resource "aws_api_gateway_authorizer" "supabase" {
-  name                   = "supabase"
-  rest_api_id            = var.restapi_id
-  authorizer_uri         = aws_lambda_function.auth.invoke_arn
-  authorizer_credentials = aws_iam_role.invocation_role.arn
-  identity_source = "method.request.header.accessToken"
+  name                             = "supabase"
+  rest_api_id                      = var.restapi_id
+  authorizer_uri                   = aws_lambda_function.auth.invoke_arn
+  authorizer_credentials           = aws_iam_role.invocation_role.arn
+  identity_source                  = "method.request.header.accessToken"
   authorizer_result_ttl_in_seconds = 0
 }
 
 
 
 resource "aws_iam_role" "invocation_role" {
-    name = "api_gateway_auth_invocation-${var.environment}"
-    path = "/"
+  name = "api_gateway_auth_invocation-${var.environment}"
+  path = "/"
 
-    assume_role_policy = <<EOF
+  assume_role_policy = <<EOF
   {
     "Version": "2012-10-17",
     "Statement": [

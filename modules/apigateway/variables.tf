@@ -1,23 +1,23 @@
 variable "lambda_api_invoke_arn" {
-    description = "Invoke ARN of the lambda that will handle the requests"
-    type = string
+  description = "Invoke ARN of the lambda that will handle the requests"
+  type        = string
 }
 
 variable "lambda_api_name" {
-    description = "Function name of the lambda that will handle the requests"
-    type = string
+  description = "Function name of the lambda that will handle the requests"
+  type        = string
 }
 
 variable "bucket_id" {
-    description = "Bucket id for the auth lambda"
-    type = string
+  description = "Bucket id for the auth lambda"
+  type        = string
 }
 
 variable "authorizer_id" {
-    type = string
+  type = string
 }
 
 variable "environment" {
-    description = "Environment: dev | prod."
-    type = string
+  description = "Environment: dev | prod."
+  type        = string
 }
