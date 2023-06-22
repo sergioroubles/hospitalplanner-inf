@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Rocio",
+        "id": "3f14b6b2-1493-49c7-80f0-ed878796e6f5",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    },
+    {
+        "name": "Maria",
+        "id": "c6c0da4a-88a4-4f3d-911e-01ad102b9872",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    },
+    {
+        "name": "Pablo",
+        "id": "01eb1778-6bd8-4c1d-b7ab-005d4f9d0aa9",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    },
+    {
+        "name": "Ines",
+        "id": "522fbf66-0c08-48d3-9d12-cdb7a3a9ffe3",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    },
+    {
+        "name": "Ric",
+        "id": "90b22069-9f58-4df7-a32e-b837f738b3b0",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    },
+    {
+        "name": "Ravi",
+        "id": "d6e721ed-296e-4e6d-b036-7f2974ac8ec2",
+        "service_id": "f5525d80-58e7-45f2-b3a4-5a4fae1fa084"
+    }
+]
