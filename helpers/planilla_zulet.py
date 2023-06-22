@@ -1,4 +1,4 @@
-from generators import generate_resources
+from generators import generate_resources, generate_dynamodb_items
 import json
 import os
 
@@ -24,3 +24,7 @@ if not os.path.exists(path):
 for resource, items in resources.items():
     with open(f"{path}/{resource}.json", "w") as file:
         json.dump(items, file, indent=4)
+        
+    with open(f"{path}/serialized-{resource}.json", "w") as file:
+        serialized_items = generate_dynamodb_items(items)
+        json.dump(serialized_items, file, indent=4)
