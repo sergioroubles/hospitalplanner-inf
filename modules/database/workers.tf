@@ -20,3 +20,10 @@ resource "aws_dynamodb_table" "workers" {
     projection_type = "ALL"
   }
 }
+
+resource "aws_dynamodb_table_item" "workers_items" {
+  count = length(local.items["workers"])
+  table_name = aws_dynamodb_table.workers.name
+  hash_key = "id"
+  item = jsonencode(local.items["workers"][count.index])
+}
