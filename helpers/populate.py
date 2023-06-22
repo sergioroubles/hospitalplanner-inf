@@ -22,7 +22,7 @@ def read_json_file(file_path):
 
 if __name__ == '__main__':
 
-    tables_files = [[f"{name}-prod", f"data/serviciozulet/{name}.json"] for name in ["restrictions", "workers", "shifts", "workers"]]
+    tables_files = [[f"{name}", f"data/serviciozulet/{name}.json"] for name in ["restrictions", "workers", "shifts", "workers"]]
     
     if True:
         import localstack_client.session as boto3
