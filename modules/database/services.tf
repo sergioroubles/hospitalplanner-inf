@@ -15,10 +15,3 @@ resource "aws_dynamodb_table" "services" {
   }
 
 }
-
-resource "aws_dynamodb_table_item" "services_items" {
-  count      = length(local.items["services"])
-  table_name = aws_dynamodb_table.services.name
-  hash_key   = "id"
-  item       = jsonencode(local.items["services"][count.index])
-}
