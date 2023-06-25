@@ -17,7 +17,7 @@ shifts_dates_list = [f"2023/03/{day}" for day in range(1, 31)]
 
 resources = generate_resources(service_name, workers_with_restrictions, shifts_dates_list)
 
-path = f"data/{service_name}"
+path = f"{service_name}"
 if not os.path.exists(path):
     os.mkdir(path)
     
