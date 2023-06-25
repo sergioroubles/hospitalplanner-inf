@@ -1,5 +1,3 @@
-
-
 # Modules
 module "bucket" {
   source      = "../../modules/buckets"
