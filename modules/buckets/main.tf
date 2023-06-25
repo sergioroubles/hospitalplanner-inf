@@ -28,3 +28,16 @@ resource "aws_s3_object" "api_lambda_zip" {
   # etag = "${md5(file("path/to/file"))}"
   etag = filemd5("../../environments/local/lambda_zips/api/lambda_package.zip")
 }
+
+
+resource "aws_s3_object" "authenticator_lambda_zip" {
+  count = var.environment == "local"? 1 : 0
+  bucket = aws_s3_bucket.backend.bucket
+  key    = "/authenticator/lambda_package.zip"
+  source = "../../environments/local/lambda_zips/authenticator/lambda_package.zip"
+
+  # The filemd5() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+  # etag = "${md5(file("path/to/file"))}"
+  etag = filemd5("../../environments/local/lambda_zips/authenticator/lambda_package.zip")
+}
