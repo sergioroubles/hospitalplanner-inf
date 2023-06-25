@@ -6,6 +6,7 @@
 - [Instructions](#instructions)
 - [Hints](#hints)
 - [CI/CD](#cicd)
+- [Localstack](#localstack)
 
 # Introduction
 Repository to host infrastructure for hospitalplanner. This project is done on terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so. 
@@ -85,3 +86,11 @@ hospitalplanner-inf/environments/dev$ terraform plan
 You can refer to `.github/workflows/terraform.yml`  to check the CICD. The standard adopted for git branches is the following:
 1. Deployments to `dev` branch will trigger CI actions to verify the pull request or push is correct. It will use terraform plan to do so.
 2. Deployments to `main` branch will trigger CI **and** CD actions, deploying both **dev** and **prod** environments into AWS.
+
+
+# Localstack
+Requirements:
+- Terraform
+- Docker
+- Localstack
+- terraform-local (can be installed with `pip install terraform-local`)
