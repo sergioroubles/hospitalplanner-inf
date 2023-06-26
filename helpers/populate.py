@@ -80,4 +80,4 @@ if __name__ == '__main__':
     # 6. Populate tables
     for json_file in json_files:
         table_name = f"{json_file.split('.')[0]}-{args.env}"
-        populate(dynamodb=dynamodb, table_name=json_file.split(".")[0], json_file=f"{args.dir}/{json_file}")
+        populate(dynamodb=dynamodb, table_name=table_name, json_file=f"{args.dir}/{json_file}")
