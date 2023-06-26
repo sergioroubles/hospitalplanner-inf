@@ -1,6 +1,7 @@
 import json
 import argparse
 import os
+import boto3
 
 # Use python populate.py --help to see a summary of usage.
 
@@ -49,13 +50,13 @@ if __name__ == '__main__':
 
     # 2. Set environment and api
     if args.env in ["prod", "dev"]:
-        import boto3
+        dynamodb = boto3.resource('dynamodb')
         print("Populating to the cloud.")
     if args.env == "local":
-        import localstack_client.session as boto3
+        dynamodb = boto3.resource('dynamodb', endpoint_url="https://localhost.localstack.cloud:4566")
         print("Populating to the local environment.")  
     
-    dynamodb = boto3.resource('dynamodb')
+    
     
     # 3. Get available tables:
     table_names = [table.name for table in dynamodb.tables.all()]
@@ -70,11 +71,13 @@ if __name__ == '__main__':
     
     # 5. Check if tables are in the list of available tables
     for json_file in json_files:
-        if json_file.split(".")[0] not in table_names:
-            print(f"Table '{json_file.split('.')[0]}' not in available tables.")
+        table_name = f"{json_file.split('.')[0]}-{args.env}"
+        if table_name not in table_names:
+            print(f"Table '{table_name}' not in available tables.")
             print("Exiting...")
             exit(1)
     
     # 6. Populate tables
     for json_file in json_files:
+        table_name = f"{json_file.split('.')[0]}-{args.env}"
         populate(dynamodb=dynamodb, table_name=json_file.split(".")[0], json_file=f"{args.dir}/{json_file}")
