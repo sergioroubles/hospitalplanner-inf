@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "backend" {
 }
 
 locals {
-  lambda_zips_dir = "../../helpers/localstack/lambda_zips"
+  lambda_zips_dir = "../../helpers/localstack/s3localbucket"
 }
 resource "aws_s3_object" "algorithm_lambda_zip" {
   count = var.environment == "local"? 1 : 0
