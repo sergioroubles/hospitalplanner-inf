@@ -9,7 +9,6 @@ services:
       - SERVICES=dynamodb,lambda
     ports:
       - '4563-4599:4563-4599'
-      - '8055:8080'
     volumes:
-      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"     # If it doesn't work, try: - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"     # If it doesn't work, try: - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
