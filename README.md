@@ -7,6 +7,8 @@
 - [Hints](#hints)
 - [CI/CD](#cicd)
 - [Localstack](#localstack)
+  - [1. Run the docker container](#1-run-the-docker-container)
+  - [2. Deploy the infrastructure into the bucket](#2-deploy-the-infrastructure-into-the-bucket)
 
 # Introduction
 Repository to host infrastructure for hospitalplanner. This project is done on terraform over AWS. Terraform backend is located manually in an S3 bucket explicitly created to do so. 
@@ -94,3 +96,23 @@ Requirements:
 - Docker
 - Localstack
 - terraform-local (can be installed with `pip install terraform-local`)
+
+## 1. Run the docker container
+Open a terminal, go to the route `helpers` and run docker compose up:
+``` bash
+docker-compose up
+```
+
+## 2. Deploy the infrastructure into the bucket
+ Open a different terminal, go to the route `environments/local` and initialize terraform using **tflocal** command.
+
+ ``` bash
+ tflocal init
+ ```
+
+IMPORTANT: Terraform keeps track of the resources deployed with a *state*. This state and other metainformation is stored in .tfstate files and .terraform inside this directory. However, if we kill the docker after deploying something and start it again, Terraform will try to check for unexisting resources and crash. Therefore, it is important to delete all those files in the environments/local folder, leaving only the **main**, **provider**, and **variables** tf files.
+
+Once it is correctly initialized you can deploy the infrastructure with the following command:
+```bash
+tflocal apply
+```
