@@ -71,7 +71,7 @@ if __name__ == '__main__':
     
     # 5. Check if tables are in the list of available tables
     for json_file in json_files:
-        table_name = f"{json_file.split('.')[0]}-{args.env}"
+        table_name = f"{args.env}-{json_file.split('.')[0]}"
         if table_name not in table_names:
             print(f"Table '{table_name}' not in available tables.")
             print("Exiting...")
@@ -79,5 +79,5 @@ if __name__ == '__main__':
     
     # 6. Populate tables
     for json_file in json_files:
-        table_name = f"{json_file.split('.')[0]}-{args.env}"
+        table_name = f"{args.env}-{json_file.split('.')[0]}"
         populate(dynamodb=dynamodb, table_name=table_name, json_file=f"{args.dir}/{json_file}")
