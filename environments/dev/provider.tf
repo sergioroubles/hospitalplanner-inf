@@ -5,7 +5,9 @@ provider "aws" {
 
   default_tags {
     tags = {
-      created-by = "terraform"
+      created-by  = "terraform"
+      environment = var.environment
+      project     = "hospitalplanner"
     }
   }
 }
