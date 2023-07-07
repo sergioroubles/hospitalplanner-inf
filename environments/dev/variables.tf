@@ -18,3 +18,9 @@ variable "PUBLIC_SUPABASE_ANON_KEY" {
   description = "Public supabase anon key for the authenticator lambda."
   type        = string
 }
+
+variable "environment" {
+  description = "Environment: dev | prod"
+  type        = string
+  default     = "dev"
+}

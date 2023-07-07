@@ -13,7 +13,7 @@ workers_with_restrictions = {
     'Ravi': ["2023-03-26", "2023-03-27", "2023-03-28", "2023-03-29"],
     }
 
-shifts_dates_list = [f"2023-03-{day}" for day in range(1, 31)]
+shifts_dates_list = [f"2023-03-{day:02d}" for day in range(1, 31)]
 
 resources = generate_resources(service_name, workers_with_restrictions, shifts_dates_list)
 
@@ -24,7 +24,3 @@ if not os.path.exists(path):
 for resource, items in resources.items():
     with open(f"{path}/{resource}.json", "w") as file:
         json.dump(items, file, indent=4)
-        
-    with open(f"{path}/serialized-{resource}.json", "w") as file:
-        serialized_items = generate_dynamodb_items(items)
-        json.dump(serialized_items, file, indent=4)

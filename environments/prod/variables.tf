@@ -22,4 +22,5 @@ variable "PUBLIC_SUPABASE_ANON_KEY" {
 variable "environment" {
   description = "Environment: dev | prod"
   type        = string
+  default     = "prod"
 }

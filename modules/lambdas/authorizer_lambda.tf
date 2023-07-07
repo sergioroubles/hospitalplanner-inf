@@ -11,6 +11,7 @@ resource "aws_lambda_function" "auth" {
     variables = {
       PUBLIC_SUPABASE_URL      = "https://mxemncnouldyyxhohrax.supabase.co"
       PUBLIC_SUPABASE_ANON_KEY = "${var.PUBLIC_SUPABASE_ANON_KEY}"
+      ENVIRONMENT = "${var.environment}"
     }
   }
 }

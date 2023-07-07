@@ -6,4 +6,9 @@ resource "aws_lambda_function" "api" {
   handler       = "src.main.handler"
   role          = aws_iam_role.lambda_backend.arn
   timeout       = 6
+  environment {
+    variables = {
+      ENVIRONMENT = "${var.environment}"
+    }
+  }
 }
