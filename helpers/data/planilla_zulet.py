@@ -13,7 +13,7 @@ workers_with_restrictions = {
     'Ravi': ["2023-03-26", "2023-03-27", "2023-03-28", "2023-03-29"],
     }
 
-shifts_dates_list = [f"2023-03-{day:02d}" for day in range(1, 31)]
+shifts_dates_list = [f"2023-03-{day:02d}" for day in range(1, 32)]
 
 resources = generate_resources(service_name, workers_with_restrictions, shifts_dates_list)
 
