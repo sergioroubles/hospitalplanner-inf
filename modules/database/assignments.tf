@@ -2,7 +2,6 @@ resource "aws_dynamodb_table" "assignments" {
   name         = "${var.environment}-assignments"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
-  range_key    = "service_id"
 
   attribute {
     name = "id"
