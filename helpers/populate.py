@@ -23,7 +23,7 @@ def create_parser():
     parser = argparse.ArgumentParser()
     parser.description = "Populates the selected environment with the data in the directory passed an argument."
     parser.add_argument("env", help="environment to deploy", choices=["prod", "dev", "local"])
-    parser.add_argument("-dir", help="directory containing json files with the names of the tables")
+    parser.add_argument("dir", help="directory containing json files with the names of the tables")
     return parser
 
 def populate(dynamodb, table_name: str, json_file: str) -> None:
