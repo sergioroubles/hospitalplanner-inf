@@ -32,7 +32,7 @@ resource "aws_api_gateway_authorizer" "supabase" {
   rest_api_id                      = var.restapi_id
   authorizer_uri                   = aws_lambda_function.auth.invoke_arn
   authorizer_credentials           = aws_iam_role.invocation_role.arn
-  identity_source                  = "method.request.header.accessToken"
+  identity_source                  = "method.request.header.authorizationToken"
   authorizer_result_ttl_in_seconds = 0
 }
 
