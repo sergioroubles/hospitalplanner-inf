@@ -14,6 +14,11 @@ resource "aws_dynamodb_table" "restrictions" {
     }
 
     attribute {
+        name = "service_id"
+        type = "S"
+    }
+
+    attribute {
         name = "worker_id"
         type = "S"
     }
@@ -21,6 +26,13 @@ resource "aws_dynamodb_table" "restrictions" {
     global_secondary_index {
         name = "worker_id-index"
         hash_key = "worker_id"
+        range_key = "datetime"
+        projection_type = "ALL"
+    }
+
+    global_secondary_index {
+        name = "service_id-index"
+        hash_key = "service_id"
         range_key = "datetime"
         projection_type = "ALL"
     }

@@ -5,7 +5,7 @@ resource "aws_lambda_function" "api" {
   runtime       = "python3.9"
   handler       = "src.main.handler"
   role          = aws_iam_role.lambda_backend.arn
-  timeout       = 6
+  timeout       = 10
   environment {
     variables = {
       ENVIRONMENT = "${var.environment}"
