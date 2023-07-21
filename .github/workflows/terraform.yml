@@ -10,7 +10,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main", "dev" ]
-  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -24,7 +23,7 @@ env:
   TF_VAR_AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }} # Used by tfvariables
   TF_VAR_AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }} # Used by tfvariables
   AWS_REGION: eu-west-2
-  TF_VAR_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  TF_VAR_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
 
 jobs:
   terraform:
