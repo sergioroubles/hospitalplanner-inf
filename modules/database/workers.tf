@@ -12,11 +12,15 @@ resource "aws_dynamodb_table" "workers" {
     name = "name"
     type = "S"
   }
+  attribute {
+    name = "service_id"
+    type = "S"
+  }
 
   global_secondary_index {
-    name            = "name-index"
-    hash_key        = "name"
-    range_key       = "id"
+    name            = "service_id-index"
+    hash_key        = "service_id"
+    range_key       = "name"
     projection_type = "ALL"
   }
 }
