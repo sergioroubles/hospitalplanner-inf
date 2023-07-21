@@ -5,7 +5,7 @@ resource "aws_lambda_function" "algorithm" {
   runtime       = "python3.9"
   handler       = "src.lambda_function.lambda_handler"
   role          = aws_iam_role.lambda_backend.arn
-  timeout       = 6
+  timeout       = 12
   layers        = ["arn:aws:lambda:eu-west-2:336392948345:layer:AWSSDKPandas-Python39:7"]
   environment {
     variables = {
